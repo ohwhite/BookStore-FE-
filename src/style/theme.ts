@@ -33,6 +33,10 @@ interface Theme {
       [key in LayoutWidth] : string;
     };
   };
+   inputText: {       
+    background: string;
+    color: string;
+  };
 }
 
 export const light : Theme = {
@@ -93,6 +97,10 @@ export const light : Theme = {
       medium: "760px",
       small: "320px"
     }
+  },
+  inputText: {
+    background: "#f0f0f0",
+    color: "#000000",
   }
 };
 
@@ -107,6 +115,10 @@ export const dark : Theme = {
     border: "gray",
     text: "black",
   },
+  inputText: {
+    background: "#222222",
+    color: "#ffffff",
+  }
 }
 export const getTheme = (themeName: ThemeName) : Theme =>{
   switch (themeName) {
