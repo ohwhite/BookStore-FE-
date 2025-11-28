@@ -9,13 +9,27 @@ interface Props  extends React.ButtonHTMLAttributes<HTMLInputElement>{
   disabled?: boolean;
   isLoading?: boolean;
 }
-function Button({children, size, scheme, disabled,isLoading} : Props) {
+function Button({ 
+  children, 
+  size, 
+  scheme, 
+  disabled, 
+  isLoading, 
+  onClick,   // onClick을 props에서 받아옴
+  ...rest    // 다른 HTML 속성들도 받아옴
+}: Props) {
   return (
-    <ButtonStyle size={size} scheme={scheme} 
-    disabled={disabled} isLoading={isLoading}>
+    <ButtonStyle
+      size={size}
+      scheme={scheme}
+      disabled={disabled}
+      isLoading={isLoading}
+      onClick={onClick}  // onClick을 ButtonStyle에 전달
+      {...rest}         // 다른 속성들도 전달
+    >
       {children}
     </ButtonStyle>
-  )
+  );
 }
 const ButtonStyle = styled.button<Omit<Props, "children">>`
   font-size: ${({theme, size }) => theme.button[size].fontSize};
